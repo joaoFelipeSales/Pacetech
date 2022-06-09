@@ -1,0 +1,83 @@
+package ProjetoSemana6;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        char repetirMenu = 'S';
+        float tempCelsius = 0.0f;
+        float tempFahrenheit = 0.0f;
+        float convCelsius = 0.0f;
+        float convFahrenheit = 0.0f;
+        float cotDolar = 0.0f;
+        float moedaDolar = 0.0f;
+        float convDolar = 0.0f;
+        float moedaReal = 0.0f;
+        float convReal = 0.0f;
+
+        while (repetirMenu == 'S' || repetirMenu == 's') {
+
+            System.out.println("Qual Conversao deseja fazer?");
+            System.out.println("Para converter moedas:");
+            System.out.println("1 - Converter de Dolar p/ Real");
+            System.out.println("2 - Converter de Real p/ Dolar");
+            System.out.println("Para converter temperaturas:");
+            System.out.println("3 - Converter de Celsius p/ Fahrenheit");
+            System.out.println("4 - Converter de Fahrenheit p/ Celsius");
+            System.out.println("5 - Sair");
+            int opcaoMenu = sc.nextInt();
+
+            if (opcaoMenu == 1) {
+                System.out.print("Preencha a cotacao atual do dolar: R$ ");
+                cotDolar = sc.nextFloat();
+                System.out.print("Preencha a quantidade que deseja converter "
+                        + "U$$");
+                moedaDolar = sc.nextFloat();
+                convReal = moedaDolar * cotDolar;
+                System.out.println("Valor convertido de dolar para real: R$"
+                        + convReal);
+            } else if (opcaoMenu == 2) {
+                System.out.print("Preencha a cotacao atual do dolar: R$ ");
+                cotDolar = sc.nextFloat();
+                System.out.print("Preencha a quantidade que deseja converter: "
+                        + "R$");
+                moedaReal = sc.nextFloat();
+                convDolar = moedaReal / cotDolar;
+                System.out.println("Valor convertido de real para dolar: US$ "
+                        + convDolar);
+            } else if (opcaoMenu == 3) {
+                System.out.print("Preencha a temperatura em Celsius (C): ");
+                tempCelsius = sc.nextFloat();
+                convFahrenheit = (tempCelsius * 9 / 5) + 32;
+                System.out.println("Temperatura em Celsius: "
+                        + tempCelsius + " C");
+                System.out.println("Temperatura convertida de Celsius para "
+                        + "Fahrenheit: " + convFahrenheit + " F");
+            } else if (opcaoMenu == 4) {
+                System.out.println("");
+                System.out.print("Preencha a temperatura em Fahreinheit "
+                        + "(F): ");
+                tempFahrenheit = sc.nextFloat();
+                convCelsius = (tempFahrenheit - 32) * 5 / 9;
+                System.out.println("Temperatura em Fahrenheit: "
+                        + tempFahrenheit + " F");
+                System.out.println("Temperatura convertida de Fahrenheit para "
+                        + "Celsius: " + convCelsius + " C");
+            } else if (opcaoMenu != 5) {
+                System.out.println("Opcao invalida, digite uma opcao valida!");
+                        
+            }
+            if (opcaoMenu == 5) {
+                repetirMenu = 'N';
+            } else {
+                System.out.println("Deseja realizar outra conversao? (S/N)");
+                repetirMenu = sc.next().charAt(0);
+            }
+        }
+        System.out.println("FIM!");
+    }
+}
